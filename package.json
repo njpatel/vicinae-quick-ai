@@ -1,0 +1,148 @@
+{
+  "name": "quick-ai",
+  "title": "Quick AI",
+  "description": "Raycast-style quick AI answers from any OpenAI-compatible server",
+  "icon": "icon.png",
+  "author": "njpatel",
+  "keywords": ["ai", "chat", "openai", "quick answers"],
+  "categories": ["Productivity"],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "ask",
+      "title": "Ask AI",
+      "subtitle": "Quick AI",
+      "description": "Get a quick, streaming AI answer",
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "query",
+          "placeholder": "Ask anything…",
+          "type": "text",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "ask-selection",
+      "title": "Ask AI about Selection",
+      "subtitle": "Quick AI",
+      "description": "Ask about the currently selected text",
+      "mode": "view",
+      "arguments": [
+        { "name": "query", "placeholder": "Ask about the selection…", "type": "text", "required": false }
+      ]
+    },
+    {
+      "name": "ask-clipboard",
+      "title": "Ask AI about Clipboard",
+      "subtitle": "Quick AI",
+      "description": "Ask about the current clipboard text",
+      "mode": "view",
+      "arguments": [
+        { "name": "query", "placeholder": "Ask about the clipboard…", "type": "text", "required": false }
+      ]
+    },
+    {
+      "name": "model-list",
+      "title": "Select AI Model",
+      "subtitle": "Quick AI",
+      "description": "Pick the model Quick AI uses, listed live from the server",
+      "mode": "view"
+    },
+    {
+      "name": "history",
+      "title": "Quick AI History",
+      "subtitle": "Quick AI",
+      "description": "Browse and continue past conversations",
+      "mode": "view"
+    },
+    {
+      "name": "presets",
+      "title": "AI Presets",
+      "subtitle": "Quick AI",
+      "description": "Manage presets (system prompt + model bundles)",
+      "mode": "view"
+    },
+    {
+      "name": "ai-commands",
+      "title": "AI Commands",
+      "subtitle": "Quick AI",
+      "description": "Run reusable prompts on the selected text",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "baseUrl",
+      "title": "API Base URL",
+      "description": "OpenAI-compatible base URL. Leave empty to use codex-pooled (CLIProxyAPI from ~/codex-pooled/config.toml).",
+      "type": "textfield",
+      "required": false,
+      "placeholder": "auto (codex-pooled)"
+    },
+    {
+      "name": "apiKey",
+      "title": "API Key",
+      "description": "Bearer token. Leave empty to use the codex-pooled token from ~/.bashrc.",
+      "type": "password",
+      "required": false
+    },
+    {
+      "name": "model",
+      "title": "Fallback Model",
+      "description": "Used only when no model has been picked with Select AI Model. Leave empty to use the codex-pooled default.",
+      "type": "textfield",
+      "required": false,
+      "placeholder": "auto"
+    },
+    {
+      "name": "primaryAction",
+      "title": "Primary Action on Answers",
+      "description": "What Enter does on an answer (Raycast defaults to paste)",
+      "type": "dropdown",
+      "required": false,
+      "default": "paste",
+      "data": [
+        { "title": "Paste into previous app", "value": "paste" },
+        { "title": "Copy to clipboard", "value": "copy" }
+      ]
+    },
+    {
+      "name": "sidebarCount",
+      "title": "Sidebar Conversations",
+      "description": "How many recent conversations to show in the Quick AI sidebar",
+      "type": "textfield",
+      "required": false,
+      "default": "8"
+    },
+    {
+      "name": "newChatMinutes",
+      "title": "Continue Last Chat Within (minutes)",
+      "description": "0 (default) = every launch starts a new chat; pick recent ones from the sidebar. N = a launch within N minutes continues the last chat. \"never\" = always continue.",
+      "type": "textfield",
+      "required": false,
+      "default": "0"
+    },
+    {
+      "name": "systemPrompt",
+      "title": "System Prompt",
+      "description": "Sets the answer style",
+      "type": "textfield",
+      "required": false,
+      "default": "You are a quick-answer assistant inside a launcher. Answer directly and concisely in Markdown. Lead with the answer itself; add brief detail only when it genuinely helps."
+    }
+  ],
+  "dependencies": {
+    "@vicinae/api": "^0.20.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.1",
+    "@types/react": "^19.0.10",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "build": "vici build",
+    "dev": "vici develop"
+  }
+}
