@@ -64,6 +64,8 @@ compositor** — separate XDG dirs, its own server, virtual keyboard, and
 screenshots — so you can develop and test without touching your real launcher.
 See the script header for the details (and the traps it works around).
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how we review contributions.
+
 ## Implementation notes
 
 Constraints discovered the hard way, encoded in the code comments:
